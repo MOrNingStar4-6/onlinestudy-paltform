@@ -50,7 +50,10 @@
 │   └── src/main/
 │       ├── java/com/donghan/studyhub/
 │       │   ├── StudyHubApplication.java
-│       │   ├── course/     # 实体、仓库、控制器
+│       │   ├── controller/ # REST 控制器
+│       │   ├── service/    # 业务逻辑
+│       │   ├── repository/ # 数据访问
+│       │   ├── entity/     # 实体
 │       │   └── config/     # CORS 与种子数据
 │       └── resources/application.yml
 ├── index.html

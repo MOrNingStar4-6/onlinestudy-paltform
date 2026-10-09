@@ -1,4 +1,4 @@
-package com.donghan.studyhub.course;
+package com.donghan.studyhub.entity;
 
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
@@ -55,7 +55,7 @@ public class Course {
         this.instructor = instructor;
         this.duration = duration;
         this.level = level;
-        this.tags = tags;
+        this.tags = new ArrayList<>(tags);
     }
 
     public String getId() { return id; }

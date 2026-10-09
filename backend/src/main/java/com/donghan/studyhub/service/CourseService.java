@@ -1,29 +1,23 @@
-package com.donghan.studyhub.course;
+package com.donghan.studyhub.service;
 
+import com.donghan.studyhub.entity.Course;
+import com.donghan.studyhub.repository.CourseRepository;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/api/courses")
-public class CourseController {
+@Service
+public class CourseService {
 
     private final CourseRepository repository;
 
-    public CourseController(CourseRepository repository) {
+    public CourseService(CourseRepository repository) {
         this.repository = repository;
     }
 
-    @GetMapping
-    public List<Course> list(
-            @RequestParam(required = false) String category,
-            @RequestParam(required = false) String keyword) {
+    public List<Course> listCourses(String category, String keyword) {
         return repository.findAll().stream()
                 .filter(course -> category == null || category.isBlank()
                         || "全部".equals(category) || course.getCategory().equals(category))
@@ -31,8 +25,7 @@ public class CourseController {
                 .toList();
     }
 
-    @GetMapping("/{id}")
-    public Course get(@PathVariable String id) {
+    public Course getCourse(String id) {
         return repository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "课程不存在"));
     }

@@ -1,7 +1,7 @@
 package com.donghan.studyhub.config;
 
-import com.donghan.studyhub.course.Course;
-import com.donghan.studyhub.course.CourseRepository;
+import com.donghan.studyhub.entity.Course;
+import com.donghan.studyhub.repository.CourseRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
